@@ -29,6 +29,7 @@ requirements:
     - cmake
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+  host: []  # Empty host dependency section
 
 test:
   commands:
