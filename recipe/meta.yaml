@@ -1,6 +1,6 @@
 {% set name = "nlohmann_json" %}
-{% set version = "3.4.0" %}
-{% set sha256 = "c377963a95989270c943d522bfefe7b889ef5ed0e1e15d535fd6f6f16ed70732" %}
+{% set version = "3.5.0" %}
+{% set sha256 = "e0b1fc6cc6ca05706cce99118a87aca5248bd9db3113e703023d23f044995c1d" %}
 
 package:
   name: {{ name|lower }}
