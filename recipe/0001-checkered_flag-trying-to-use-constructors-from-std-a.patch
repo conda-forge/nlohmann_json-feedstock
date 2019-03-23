@@ -1,0 +1,26 @@
+From 6fb1085b07eeecd7d0c8e7a0a7c21401d2901bb6 Mon Sep 17 00:00:00 2001
+From: Niels Lohmann <mail@nlohmann.me>
+Date: Thu, 21 Mar 2019 14:09:29 +0100
+Subject: [PATCH] :checkered_flag: trying to use constructors from
+ std::allocator #1536
+
+---
+ test/src/unit-allocator.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/src/unit-allocator.cpp b/test/src/unit-allocator.cpp
+index a43ad543..edf3e048 100644
+--- a/test/src/unit-allocator.cpp
++++ b/test/src/unit-allocator.cpp
+@@ -71,6 +71,8 @@ static bool next_deallocate_fails = false;
+ template<class T>
+ struct my_allocator : std::allocator<T>
+ {
++    using std::allocator<T>::allocator;
++
+     template<class... Args>
+     void construct(T* p, Args&& ... args)
+     {
+-- 
+2.20.1
+
