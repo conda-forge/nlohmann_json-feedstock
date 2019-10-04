@@ -10,8 +10,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/nlohmann/json/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - 0001-checkered_flag-trying-to-use-constructors-from-std-a.patch
 
 build:
   number: 0
