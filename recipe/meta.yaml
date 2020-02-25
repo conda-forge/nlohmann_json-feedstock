@@ -27,6 +27,7 @@ build:
 requirements:
   build:
     - cmake
+    - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host: []  # Empty host dependency section
