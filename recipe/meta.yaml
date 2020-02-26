@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   # The json library is header only, so we do not need
   # to export the compiler run-time libraries.
@@ -27,6 +27,7 @@ build:
 requirements:
   build:
     - cmake
+    - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host: []  # Empty host dependency section
