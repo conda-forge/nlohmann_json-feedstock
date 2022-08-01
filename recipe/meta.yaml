@@ -1,6 +1,6 @@
 {% set name = "nlohmann_json" %}
-{% set version = "3.10.5" %}
-{% set sha256 = "5daca6ca216495edf89d167f808d1d03c4a4d929cef7da5e10f135ae1540c7e4" %}
+{% set version = "3.11.0" %}
+{% set sha256 = "e0c4fbd03c0bb7e99b40791e0276be61e5f531106e1486e8f0d771a7ed6d754a" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
   # The json library is header only, so we do not need
   # to export the compiler run-time libraries.
