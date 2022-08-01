@@ -42,7 +42,7 @@ test:
     - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]
     - if not exist %LIBRARY_PREFIX%\include\nlohmann\json.hpp (exit 1)  # [win]
     - if not exist %LIBRARY_PREFIX%\include\nlohmann\json_fwd.hpp (exit 1)  # [win]
-    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfig (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake (exit 1)  # [win]
     - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake (exit 1)  # [win]
     - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonTargets.cmake (exit 1)  # [win]
 
