@@ -37,14 +37,14 @@ test:
     - test -d ${PREFIX}/include/nlohmann  # [unix]
     - test -f ${PREFIX}/include/nlohmann/json.hpp  # [unix]
     - test -f ${PREFIX}/include/nlohmann/json_fwd.hpp  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]
-    - if exist %LIBRARY_PREFIX%\include\nlohmann\json.hpp (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\include\nlohmann\json_fwd.hpp (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonConfig.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonConfigVersion.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonTargets.cmake (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake  # [unix]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake  # [unix]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]
+    - if not exist %LIBRARY_PREFIX%\include\nlohmann\json.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\include\nlohmann\json_fwd.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonTargets.cmake (exit 1)  # [win]
 
 about:
   home: http://github.com/nlohmann/json
