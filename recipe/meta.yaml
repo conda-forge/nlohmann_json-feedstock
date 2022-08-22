@@ -1,6 +1,6 @@
 {% set name = "nlohmann_json" %}
-{% set version = "3.10.5" %}
-{% set sha256 = "5daca6ca216495edf89d167f808d1d03c4a4d929cef7da5e10f135ae1540c7e4" %}
+{% set version = "3.11.1" %}
+{% set sha256 = "598becb62ee0e01cf32795073c8ae09b6e95335cd43a4417b785d93ce105b0d0" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
   # The json library is header only, so we do not need
   # to export the compiler run-time libraries.
@@ -37,14 +37,14 @@ test:
     - test -d ${PREFIX}/include/nlohmann  # [unix]
     - test -f ${PREFIX}/include/nlohmann/json.hpp  # [unix]
     - test -f ${PREFIX}/include/nlohmann/json_fwd.hpp  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake  # [unix]
-    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]
-    - if exist %LIBRARY_PREFIX%\include\nlohmann\json.hpp (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\include\nlohmann\json_fwd.hpp (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonConfig.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonConfigVersion.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\lib\cmake\nlohmann_jsonTargets.cmake (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake  # [unix]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake  # [unix]
+    - test -f ${PREFIX}/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]
+    - if not exist %LIBRARY_PREFIX%\include\nlohmann\json.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\include\nlohmann\json_fwd.hpp (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake (exit 1)  # [win]
+    - if not exist %LIBRARY_PREFIX%\share\cmake\nlohmann_json\nlohmann_jsonTargets.cmake (exit 1)  # [win]
 
 about:
   home: http://github.com/nlohmann/json
