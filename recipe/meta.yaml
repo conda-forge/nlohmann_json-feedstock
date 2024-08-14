@@ -13,17 +13,14 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   # The json library is header only, so we do not need
   # to export the compiler run-time libraries.
   # They are just needed during the build to perform some checks.
   ignore_run_exports:
-    - libcxx
-    - libgcc-ng
-    - libstdcxx-ng
-    - vc
-    - vs2015_runtime
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
 
 requirements:
   build:
