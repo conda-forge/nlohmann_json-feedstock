@@ -29,6 +29,7 @@ requirements:
   build:
     - cmake
     - make  # [unix]
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host: []  # Empty host dependency section
