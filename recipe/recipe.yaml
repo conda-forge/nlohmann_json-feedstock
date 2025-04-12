@@ -27,6 +27,7 @@ requirements:
     from_package: 
       - ${{ (compiler('c') | split(' '))[0] }}
       - ${{ (compiler('cxx') | split(' '))[0] }}
+      - ${{ (stdlib('c') | split(' '))[0] }}
 
 tests:
   - package_contents:
