@@ -1,8 +1,9 @@
 context:
+  name: nlohmann_json
   version: "3.12.0"
 
 recipe:
-  name: nlohmann_json
+  name: ${{ name }}
   version: ${{ version }}
 
 source:
