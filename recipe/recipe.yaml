@@ -30,6 +30,9 @@ outputs:
         - ${{ stdlib('c') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
+      run_exports:
+        strong:
+          - ${{ pin_subpackage('nlohmann_json-abi', exact=True)}}
       ignore_run_exports:
         # The json library is header only, so we do not need
         # to export the compiler run-time libraries.
