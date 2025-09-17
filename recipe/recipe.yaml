@@ -19,7 +19,10 @@ outputs:
       version: ${{ version }}
     build:
       noarch: generic
-      script: echo "nlohmann_json abi is built"
+      script: echo "nlohmann_json-abi is built"
+    requirements:
+      run_exports:
+        - nlohmann_json-abi ==${{ version }}
 
   - package:
       name: ${{ name }}
@@ -31,9 +34,8 @@ outputs:
         - ${{ stdlib('c') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
-      run_exports:
-        strong:
-          - ${{ pin_subpackage('nlohmann_json-abi', exact=True)}}
+      run_constraints:
+        - nlohmann_json-abi ==${{ version }}
       ignore_run_exports:
         # The json library is header only, so we do not need
         # to export the compiler run-time libraries.
