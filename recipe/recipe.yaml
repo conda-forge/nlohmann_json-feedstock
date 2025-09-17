@@ -17,6 +17,10 @@ outputs:
   - package:
       name: ${{ name }}-abi
       version: ${{ version }}
+      description: |
+        Empty package which enforces ABI compatibility for nlohmann_json.
+        This package ensures all linked shared libraries use the exact same
+        version of nlohmann_json to prevent runtime errors.
     build:
       noarch: generic
       script: echo "nlohmann_json-abi is built"
