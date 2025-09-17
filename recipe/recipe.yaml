@@ -15,9 +15,6 @@ build:
 
 outputs:
   - package:
-      # Empty package which enforces ABI compatibility for nlohmann_json.
-      # This package ensures all linked shared libraries use the exact same
-      # version of nlohmann_json to prevent runtime errors.
       name: ${{ name }}-abi
       version: ${{ version }}
     build:
@@ -26,6 +23,11 @@ outputs:
     requirements:
       run_exports:
         - nlohmann_json-abi ==${{ version }}
+    about:
+      description: |
+        Empty package which enforces ABI compatibility for nlohmann_json.
+        This package ensures all linked shared libraries use the exact same
+        version of nlohmann_json to prevent runtime errors.
 
   - package:
       name: ${{ name }}
