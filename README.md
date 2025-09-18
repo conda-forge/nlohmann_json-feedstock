@@ -3,6 +3,10 @@ About nlohmann_json-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nlohmann_json-feedstock/blob/main/LICENSE.txt)
 
+
+About nlohmann_json
+-------------------
+
 Home: http://github.com/nlohmann/json
 
 Package license: MIT
@@ -14,6 +18,23 @@ Development: http://github.com/nlohmann/json
 Documentation: http://nlohmann.github.io/json/
 
 JSON for Modern C++ is a C++11 JSON parser.
+
+About nlohmann_json-abi
+-----------------------
+
+Home: http://github.com/nlohmann/json
+
+Package license: MIT
+
+Summary: JSON for Modern C++
+
+Development: http://github.com/nlohmann/json
+
+Documentation: http://nlohmann.github.io/json/
+
+Empty package which enforces ABI compatibility for nlohmann_json.
+This package ensures all linked shared libraries use the exact same
+version of nlohmann_json to prevent runtime errors.
 
 Current build status
 ====================
@@ -87,7 +108,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-nlohmann_json-green.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nlohmann__json-green.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nlohmann_json.svg)](https://anaconda.org/conda-forge/nlohmann_json) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nlohmann__json--abi-green.svg)](https://anaconda.org/conda-forge/nlohmann_json-abi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nlohmann_json-abi.svg)](https://anaconda.org/conda-forge/nlohmann_json-abi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nlohmann_json-abi.svg)](https://anaconda.org/conda-forge/nlohmann_json-abi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nlohmann_json-abi.svg)](https://anaconda.org/conda-forge/nlohmann_json-abi) |
 
 Installing nlohmann_json
 ========================
@@ -99,16 +121,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `nlohmann_json` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `nlohmann_json, nlohmann_json-abi` can be installed with `conda`:
 
 ```
-conda install nlohmann_json
+conda install nlohmann_json nlohmann_json-abi
 ```
 
 or with `mamba`:
 
 ```
-mamba install nlohmann_json
+mamba install nlohmann_json nlohmann_json-abi
 ```
 
 It is possible to list all of the versions of `nlohmann_json` available on your platform with `conda`:

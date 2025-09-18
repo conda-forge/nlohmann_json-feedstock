@@ -1,8 +1,9 @@
 context:
+  name: nlohmann_json
   version: "3.12.0"
 
-package:
-  name: nlohmann_json
+recipe:
+  name: ${{ name }}
   version: ${{ version }}
 
 source:
@@ -10,34 +11,53 @@ source:
   sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
 
 build:
-  number: 0
+  number: 1
 
-requirements:
-  build:
-    - cmake
-    - ninja
-    - ${{ stdlib('c') }}
-    - ${{ compiler('c') }}
-    - ${{ compiler('cxx') }}
+outputs:
+  - package:
+      name: ${{ name }}-abi
+      version: ${{ version }}
+    build:
+      noarch: generic
+      script: echo "nlohmann_json-abi is built"
+    requirements:
+      run_exports:
+        - nlohmann_json-abi ==${{ version }}
+    about:
+      description: |
+        Empty package which enforces ABI compatibility for nlohmann_json.
+        This package ensures all linked shared libraries use the exact same
+        version of nlohmann_json to prevent runtime errors.
 
-  ignore_run_exports:
-    # The json library is header only, so we do not need
-    # to export the compiler run-time libraries.
-    # They are just needed during the build to perform some checks.
-    from_package: 
-      - ${{ (compiler('c') | split(' '))[0] }}
-      - ${{ (compiler('cxx') | split(' '))[0] }}
-      - ${{ (stdlib('c') | split(' '))[0] }}
-
-tests:
-  - package_contents:
-      include:
-        - nlohmann/json.hpp
-        - nlohmann/json_fwd.hpp
-      files:
-        - "**/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake"
-        - "**/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake" 
-        - "**/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake"
+  - package:
+      name: ${{ name }}
+      version: ${{ version }}
+    requirements:
+      build:
+        - cmake
+        - ninja
+        - ${{ stdlib('c') }}
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+      run_constraints:
+        - nlohmann_json-abi ==${{ version }}
+      ignore_run_exports:
+        # The json library is header only, so we do not need
+        # to export the compiler run-time libraries.
+        # They are just needed during the build to perform some checks.
+        from_package:
+          - ${{ (compiler('c') | split(' '))[0] }}
+          - ${{ (compiler('cxx') | split(' '))[0] }}
+          - ${{ (stdlib('c') | split(' '))[0] }}
+    tests:
+      - package_contents:
+          include:
+            - nlohmann/json.hpp
+            - nlohmann/json_fwd.hpp
+          files:
+            - "**/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake"
+            - "**/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake"
+            - "**/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake"
 
 about:
   homepage: http://github.com/nlohmann/json
