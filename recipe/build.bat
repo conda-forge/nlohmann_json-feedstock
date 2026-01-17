@@ -1,4 +1,4 @@
-cmake ^
+cmake %CMAKE_ARGS% ^
 	-G "Ninja" ^
 	-D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
 	-D BUILD_TESTING=OFF ^
