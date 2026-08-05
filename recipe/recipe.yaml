@@ -11,7 +11,7 @@ source:
   sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - package:
@@ -32,6 +32,11 @@ outputs:
   - package:
       name: ${{ name }}
       version: ${{ version }}
+    build:
+      script:
+        - if: win
+          then: build.bat
+          else: build.sh
     requirements:
       build:
         - cmake
